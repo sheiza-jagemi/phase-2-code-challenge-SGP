@@ -1,0 +1,26 @@
+/* src/components/GoalList.css */
+.goal-list {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 25px;
+  box-shadow: var(--box-shadow);
+}
+
+.goal-list h2 {
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: var(--gray);
+  background-color: var(--light);
+  border-radius: var(--border-radius);
+}
+
+.goals-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}

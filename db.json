@@ -1,0 +1,12 @@
+{
+  "goals": [
+    {
+      "id": 1,
+      "name": "Summer Vacation",
+      "targetAmount": 5000,
+      "savedAmount": 1500,
+      "deadline": "2023-12-31",
+      "category": "Travel"
+    }
+  ]
+}
