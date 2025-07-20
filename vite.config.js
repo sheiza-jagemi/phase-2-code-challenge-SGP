@@ -6,23 +6,23 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'http://localhost:3001', // Backend server URL
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
+        rewrite: (path) => path.replace(/^\/api/, '') // Removes `/api` when forwarding
       }
     },
-    port: 3000
+    port: 3000 // Frontend port
   },
   build: {
     outDir: 'dist',
-    minify: 'terser', // Explicitly use terser
+    minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true, // Remove console logs in production
-        drop_debugger: true // Remove debugger statements
+        drop_console: true,
+        drop_debugger: true
       },
       format: {
-        comments: false // Remove comments
+        comments: false
       }
     },
     rollupOptions: {
