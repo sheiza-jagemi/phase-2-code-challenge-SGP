@@ -6,7 +6,7 @@ import DepositForm from './DepositForm';
 import './GoalDashboard.css';
 
 // Use the proxy path instead of direct URL
-const API_URL = "/api/goals";
+const API_URL = "https://goals-json-server.vercel.app/goals"
 
 const GoalDashboard = () => {
   const [goals, setGoals] = useState([]);
@@ -14,6 +14,8 @@ const GoalDashboard = () => {
   const [error, setError] = useState(null);
   const [activeGoal, setActiveGoal] = useState(null);
   const [showAddForm, setShowAddForm] = useState(false);
+
+  console.log('GoalDashboard mounted');
 
   // Enhanced fetch function with error handling
   const fetchGoals = async () => {
@@ -39,6 +41,7 @@ const GoalDashboard = () => {
       }
 
       const data = await response.json();
+      console.log('Fetched goals:', data);
       
       if (!Array.isArray(data)) {
         throw new Error('Invalid data format: Expected array of goals');
@@ -108,13 +111,22 @@ const GoalDashboard = () => {
 
   useEffect(() => {
     fetchGoals();
+    // fetch(API_URL).then(resp=>resp.json()).then(data=>{
+    //   console.log(data)
+    //   setGoals(data)
+    //   setIsLoading(false);
+    // })
+    // console.log('Fetching goals from:', API_URL);
   }, []);
+
+  console.log('Goals fetched:', goals);
 
   if (isLoading) {
     return (
       <div className="loading-container">
         <div className="loading-spinner"></div>
-        <p>Loading your goals...</p>
+        <p>Loading your goals ...</p>
+
       </div>
     );
   }
@@ -141,6 +153,10 @@ const GoalDashboard = () => {
       </div>
     );
   }
+
+
+
+  
 
   return (
     <div className="dashboard">
